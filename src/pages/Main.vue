@@ -167,6 +167,15 @@ export default {
         oldArray.splice(i, 1);
         n = oldArray.length;
       }
+
+      for (let i = 0; i < newArray.length; i++) {
+        if (this.students[i] === newArray[i]) {
+          const tmp = newArray[(i + 1) % newArray.length];
+          newArray[(i + 1) % newArray.length] = newArray[i];
+          newArray[i] = tmp;
+        }
+      }
+
       this.students = newArray;
       let cnt = 0;
       for (let i = 1; i <= this.seats.num; i++) {
